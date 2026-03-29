@@ -26,10 +26,10 @@ router.post('/register', async (req, res) => {
     req.session.message = { type: 'success', text: 'Account created successfully!' };
     res.redirect('/auth/login');
   } catch (err) {
-  console.error('REGISTER ERROR:', err.message, err.code);
-  req.session.message = { type: 'danger', text: `ERROR: ${err.message}` };
-  res.redirect('/auth/register');
-}
+    console.error(err);
+    req.session.message = { type: 'danger', text: 'Email already exists or invalid input.' };
+    res.redirect('/auth/register');
+  }
 });
 
 // GET /auth/login
